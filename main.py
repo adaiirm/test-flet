@@ -13,12 +13,15 @@ def main(page: ft.Page):
 
     content_1 = ft.Column(
             [
+                ft.CupertinoTextField(
+                    label="a. Probar este input primero",
+                    width=400
+                ),
                 ft.TextField(
-                    value="1. Tap here to show the touch keyboard",
-                    text_align=ft.TextAlign.RIGHT,
+                    label="b. Después probar este otro input",
                     width=400),
                 ft.OutlinedButton(
-                    "2. Then tap or click me to change the page content",
+                    "2. Cambiar de contenido",
                     on_click=button_click),
             ],
             alignment=ft.MainAxisAlignment.CENTER,
