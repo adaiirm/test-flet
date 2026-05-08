@@ -13,16 +13,19 @@ def main(page: ft.Page):
 
     content_1 = ft.Column(
             [
-                ft.CupertinoTextField(
-                    label="a. Probar este input primero",
-                    width=400
-                ),
                 ft.TextField(
-                    label="b. Después probar este otro input",
+                    label="1. Probar input",
                     width=400),
-                ft.OutlinedButton(
-                    "2. Cambiar de contenido",
-                    on_click=button_click),
+                ft.Container(
+                    ink=True,
+                    width=200,
+                    height=52,
+                    border_radius=30,
+                    alignment=ft.Alignment(0, 0),
+                    border=ft.Border.all(1, ft.Colors.BLACK),
+                    content=ft.Text("2. Cambiar de contenido"),
+                    on_click=button_click
+                ),
             ],
             alignment=ft.MainAxisAlignment.CENTER,
         )
@@ -45,10 +48,12 @@ def main(page: ft.Page):
     switcher = ft.AnimatedSwitcher(content=content_1, duration=100)
     
     def switch_content1(_e):
+
         switcher.content = content_1
         page.update()
 
     def switch_content(_e):
+        
         switcher.content = content_2
         page.update()
 
