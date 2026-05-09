@@ -38,6 +38,8 @@ def main(page: ft.Page):
     focus_button = ft.Button(
         content=ft.Text("-"),
         on_focus=lambda e: print("en foco focus_button"),
+        height=0,
+        width=0,
         # opacity=0,
     )
         
