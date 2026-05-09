@@ -21,7 +21,7 @@ def main(page: ft.Page):
     text_field = ft.TextField(
         label="1. Probar input",
         on_focus=lambda e: print("en foco textfield"),
-        on_blur=lambda e: asyncio.run_coroutine_threadsafe(on_blur(), asyncio.get_event_loop()),
+        # on_blur=lambda e: asyncio.run_coroutine_threadsafe(on_blur(), asyncio.get_event_loop()),
         width=400
     )
     
@@ -72,6 +72,7 @@ def main(page: ft.Page):
                     ),
                     on_tap=button_click2
                 ),
+                focus_button,
             ],
             alignment=ft.MainAxisAlignment.CENTER,
         )
@@ -80,16 +81,17 @@ def main(page: ft.Page):
     
     def switch_content1(_e):
         # limpiar contenido para evitar que el teclado se muestre al cambiar de contenido
-        
         switcher.content = content_1
         page.update()
+        
 
     def switch_content(_e):
         switcher.content = content_2
+        asyncio.run_coroutine_threadsafe(on_blur(), asyncio.get_event_loop())
         page.update()
 
+
     page.add(ft.SafeArea(switcher))
-    page.add(focus_button)
 
 
 ft.app(target=main)
