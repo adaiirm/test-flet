@@ -21,7 +21,7 @@ def main(page: ft.Page):
     text_field = ft.TextField(
         label="1. Probar input",
         on_focus=lambda e: print("en foco textfield"),
-        # on_blur=lambda e: asyncio.run_coroutine_threadsafe(on_blur(), asyncio.get_event_loop()),
+        on_blur=lambda e: asyncio.run_coroutine_threadsafe(on_blur(), asyncio.get_event_loop()),
         width=400
     )
     
@@ -47,7 +47,7 @@ def main(page: ft.Page):
             [
                 text_field,
                 button,
-
+                focus_button,
             ],
             alignment=ft.MainAxisAlignment.CENTER,
         )
@@ -87,7 +87,6 @@ def main(page: ft.Page):
 
     def switch_content(_e):
         switcher.content = content_2
-        asyncio.run_coroutine_threadsafe(on_blur(), asyncio.get_event_loop())
         page.update()
 
 
