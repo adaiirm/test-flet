@@ -10,13 +10,16 @@ def main(page: ft.Page):
     
     def button_click2(_e):
         switch_content1(_e)
+    
+    # crear referencias a los controles
+    text_field = ft.TextField(
+        label="1. Probar input",
+        on_focus=lambda e: print("en foco textfield"),
+        width=400)
         
     content_1 = ft.Column(
             [
-                ft.TextField(
-                    label="1. Probar input",
-                    on_focus=lambda e: print("en foco textfield"),
-                    width=400),
+                text_field,
                 ft.Button(
                     width=200,
                     height=52,
@@ -39,13 +42,6 @@ def main(page: ft.Page):
                         "to the flet application."),
                 ft.OutlinedButton("3. Buttons make the keyboard show, too."),
                 ft.OutlinedButton("Volver a la página anterior", on_click=button_click2),
-                ft.Button(
-                    content=ft.Text("Invisible button"),
-                    on_focus=lambda e: print("en foco button 2"),
-                    height=0,
-                    width=0,
-                    autofocus=True
-                )
             ],
             alignment=ft.MainAxisAlignment.CENTER,
         )
@@ -53,12 +49,13 @@ def main(page: ft.Page):
     switcher = ft.AnimatedSwitcher(content=content_1, duration=100)
     
     def switch_content1(_e):
-
+        # limpiar contenido para evitar que el teclado se muestre al cambiar de contenido
+        
         switcher.content = content_1
         page.update()
 
     def switch_content(_e):
-        
+        text_field.value = ""
         switcher.content = content_2
         page.update()
 
