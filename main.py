@@ -15,15 +15,12 @@ def main(page: ft.Page):
             [
                 ft.TextField(
                     label="1. Probar input",
-                    on_focus=lambda e: print("en foco"),
+                    on_focus=lambda e: print("en foco textfield"),
                     width=400),
-                ft.Container(
-                    ink=True,
+                ft.Button(
                     width=200,
                     height=52,
-                    border_radius=30,
-                    alignment=ft.Alignment(0, 0),
-                    border=ft.Border.all(1, ft.Colors.BLACK),
+                    on_focus=lambda e: print("en foco button 1"),
                     content=ft.Text("2. Cambiar de contenido"),
                     on_click=button_click
                 ),
@@ -44,6 +41,7 @@ def main(page: ft.Page):
                 ft.OutlinedButton("Volver a la página anterior", on_click=button_click2),
                 ft.Button(
                     content=ft.Text("Invisible button"),
+                    on_focus=lambda e: print("en foco button 2"),
                     height=0,
                     width=0,
                     autofocus=True
