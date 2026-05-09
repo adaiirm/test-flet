@@ -15,7 +15,7 @@ def main(page: ft.Page):
     
     async def on_blur():
         print("blur textfield")
-        await button.focus()
+        await focus_button.focus()
     
     # crear referencias a los controles
     text_field = ft.TextField(
@@ -36,7 +36,7 @@ def main(page: ft.Page):
     
     # botón invisible para forzar foco y retraer teclado
     focus_button = ft.Button(
-        content=ft.Text(""),
+        content=ft.Text("-"),
         height=0,
         width=0,
         on_focus=lambda e: print("en foco focus_button"),
@@ -47,7 +47,7 @@ def main(page: ft.Page):
             [
                 text_field,
                 button,
-
+                focus_button
             ],
             alignment=ft.MainAxisAlignment.CENTER,
         )
