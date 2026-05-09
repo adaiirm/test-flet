@@ -8,35 +8,46 @@ def main(page: ft.Page):
 
     # forward declare button click handler
     def button_click(_e):
+        asyncio.run_coroutine_threadsafe(on_blur(), asyncio.get_event_loop())
         switch_content(_e)
     
     def button_click2(_e):
         switch_content1(_e)
     
+    async def on_blur():
+        print("blur textfield")
+        await focus_button.focus()
+    
     # crear referencias a los controles
     text_field = ft.TextField(
         label="1. Probar input",
         on_focus=lambda e: print("en foco textfield"),
-        width=400)
+        width=400
+    )
+    
+    button = ft.Button(
+        width=200,
+        height=52,
+        on_focus=lambda e: print("en foco button 1"),
+        content=ft.Text("2. Cambiar de contenido"),
+        on_click=button_click
+    )
+    
     
     # botón invisible para forzar foco y retraer teclado
     focus_button = ft.ElevatedButton(
         content=ft.Text(""),
         height=0,
         width=0,
+        on_focus=lambda e: print("en foco focus_button"),
         opacity=0
     )
         
     content_1 = ft.Column(
             [
                 text_field,
-                ft.Button(
-                    width=200,
-                    height=52,
-                    on_focus=lambda e: print("en foco button 1"),
-                    content=ft.Text("2. Cambiar de contenido"),
-                    on_click=button_click
-                ),
+                button,
+
             ],
             alignment=ft.MainAxisAlignment.CENTER,
         )
@@ -77,7 +88,6 @@ def main(page: ft.Page):
     def switch_content(_e):
         text_field.value = ""
         switcher.content = content_2
-        asyncio.create_task(focus_button.focus())
         page.update()
 
     page.add(ft.SafeArea(switcher))
