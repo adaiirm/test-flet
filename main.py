@@ -37,10 +37,8 @@ def main(page: ft.Page):
     # botón invisible para forzar foco y retraer teclado
     focus_button = ft.Button(
         content=ft.Text("-"),
-        height=0,
-        width=0,
         on_focus=lambda e: print("en foco focus_button"),
-        opacity=0
+        opacity=0,
     )
         
     content_1 = ft.Column(
