@@ -10,6 +10,13 @@ def main(page: ft.Page):
     
     def button_click2(_e):
         switch_content1(_e)
+        
+    invisible_button = ft.Button(
+        content=ft.Text("Invisible button"),
+        height=0,
+        width=0,
+        autofocus=True
+    )
 
     content_1 = ft.Column(
             [
@@ -41,6 +48,7 @@ def main(page: ft.Page):
                         "to the flet application."),
                 ft.OutlinedButton("3. Buttons make the keyboard show, too."),
                 ft.OutlinedButton("Volver a la página anterior", on_click=button_click2),
+                invisible_button
             ],
             alignment=ft.MainAxisAlignment.CENTER,
         )
