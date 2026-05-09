@@ -8,7 +8,6 @@ def main(page: ft.Page):
 
     # forward declare button click handler
     def button_click(_e):
-        asyncio.run_coroutine_threadsafe(on_blur(), asyncio.get_event_loop())
         switch_content(_e)
     
     def button_click2(_e):
