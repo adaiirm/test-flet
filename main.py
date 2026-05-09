@@ -16,6 +16,14 @@ def main(page: ft.Page):
         label="1. Probar input",
         on_focus=lambda e: print("en foco textfield"),
         width=400)
+    
+    # botón invisible para forzar foco y retraer teclado
+    focus_button = ft.ElevatedButton(
+        content=ft.Text(""),
+        height=0,
+        width=0,
+        opacity=0
+    )
         
     content_1 = ft.Column(
             [
@@ -51,13 +59,7 @@ def main(page: ft.Page):
                     ),
                     on_tap=button_click2
                 ),
-                ft.TextField(
-                    read_only=True,
-                    height=0,
-                    width=0,
-                    opacity=0,
-                    autofocus=True
-                )
+                focus_button
             ],
             alignment=ft.MainAxisAlignment.CENTER,
         )
@@ -73,6 +75,7 @@ def main(page: ft.Page):
     def switch_content(_e):
         text_field.value = ""
         switcher.content = content_2
+        focus_button.focus()
         page.update()
 
     page.add(ft.SafeArea(switcher))
