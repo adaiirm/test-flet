@@ -15,7 +15,7 @@ def main(page: ft.Page):
     
     async def on_blur():
         print("blur textfield")
-        await focus_button.focus()
+        await button.focus()
     
     # crear referencias a los controles
     text_field = ft.TextField(
@@ -47,7 +47,7 @@ def main(page: ft.Page):
             [
                 text_field,
                 button,
-                focus_button,
+
             ],
             alignment=ft.MainAxisAlignment.CENTER,
         )
@@ -72,7 +72,7 @@ def main(page: ft.Page):
                     ),
                     on_tap=button_click2
                 ),
-                focus_button,
+                focus_button
             ],
             alignment=ft.MainAxisAlignment.CENTER,
         )
@@ -81,14 +81,14 @@ def main(page: ft.Page):
     
     def switch_content1(_e):
         # limpiar contenido para evitar que el teclado se muestre al cambiar de contenido
+        
         switcher.content = content_1
         page.update()
-        
 
     def switch_content(_e):
+        text_field.value = ""
         switcher.content = content_2
         page.update()
-
 
     page.add(ft.SafeArea(switcher))
 
