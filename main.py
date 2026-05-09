@@ -40,8 +40,17 @@ def main(page: ft.Page):
                         "it only happens when you tap. You can stop it by "
                         "focusing on another application and then returning "
                         "to the flet application."),
-                ft.OutlinedButton("3. Buttons make the keyboard show, too."),
-                ft.OutlinedButton("Volver a la página anterior", on_click=button_click2),
+                ft.Container(
+                    content=ft.Text("3. Buttons make the keyboard show, too."),
+                    padding=10,
+                ),
+                ft.GestureDetector(
+                    content=ft.Container(
+                        content=ft.Text("Volver a la página anterior"),
+                        padding=10,
+                    ),
+                    on_tap=button_click2
+                ),
             ],
             alignment=ft.MainAxisAlignment.CENTER,
         )
