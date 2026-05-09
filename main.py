@@ -16,12 +16,13 @@ def main(page: ft.Page):
     
     async def on_blur():
         print("blur textfield")
-        await focus_button.focus()
+        await button.focus()
     
     # crear referencias a los controles
     text_field = ft.TextField(
         label="1. Probar input",
         on_focus=lambda e: print("en foco textfield"),
+        on_blur=lambda e: asyncio.run_coroutine_threadsafe(on_blur(), asyncio.get_event_loop()),
         width=400
     )
     
@@ -35,7 +36,7 @@ def main(page: ft.Page):
     
     
     # botón invisible para forzar foco y retraer teclado
-    focus_button = ft.ElevatedButton(
+    focus_button = ft.Button(
         content=ft.Text(""),
         height=0,
         width=0,
