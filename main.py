@@ -1,3 +1,5 @@
+import asyncio
+
 import flet as ft
 
 def main(page: ft.Page):
@@ -75,7 +77,7 @@ def main(page: ft.Page):
     def switch_content(_e):
         text_field.value = ""
         switcher.content = content_2
-        focus_button.focus()
+        asyncio.create_task(focus_button.focus())
         page.update()
 
     page.add(ft.SafeArea(switcher))
