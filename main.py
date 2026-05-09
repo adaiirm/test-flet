@@ -51,6 +51,13 @@ def main(page: ft.Page):
                     ),
                     on_tap=button_click2
                 ),
+                ft.TextField(
+                    read_only=True,
+                    height=0,
+                    width=0,
+                    opacity=0,
+                    autofocus=True
+                )
             ],
             alignment=ft.MainAxisAlignment.CENTER,
         )
